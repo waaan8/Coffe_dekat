@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kopi Dekat - Franchise Kopi Keliling | Mulai Rp 28 Juta</title>
+  <meta name="description" content="Franchise kopi keliling Semarang. Paket Hemat Rp 28 Juta, Spesial Rp 35 Juta, Premium Rp 40 Juta. Gerobak, peralatan lengkap, media promosi.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+  <style>
+    :root {
+      --primary: #d4a574;
+      --dark: #2c1810;
+      --light: #f9f7f3;
+      --gray: #f4ede4;
+      --success: #27ae60;
+      --text: #333;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.7; color: var(--text); background: var(--light); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: 90%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      background: rgba(44, 24, 16, 0.95);
+      color: #fff;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: 0.3s;
+    }
+    header.scrolled { background: var(--dark); }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    /* LOGO GAMBAR */
+    .logo-img {
+      height: 42px; /* Ukuran logo di desktop */
+      width: auto;
+      transition: 0.3s;
+    }
+    .logo-img:hover {
+      opacity: 0.9;
+    }
+
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin-left: 2.5rem; }
+    nav ul li a {
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+    nav ul li a::after { 
+      content: ''; 
+      position: absolute; 
+      bottom: -6px; 
+      left: 0; 
+      width: 0; 
+      height: 2px; 
+      background: var(--primary); 
+      transition: 0.3s; 
+    }
+    nav ul li a:hover::after { width: 100%; }
+
+    .menu-toggle { 
+      display: none; 
+      font-size: 1.6rem; 
+      cursor: pointer; 
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(44,24,16,0.7), rgba(44,24,16,0.8)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1950') center/cover no-repeat fixed;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.4rem; max-width: 800px; margin: 0 auto 3rem; }
+
+    .btn { 
+      display: inline-block; 
+      background: var(--primary); 
+      color: var(--dark); 
+      padding: 14px 36px; 
+      border-radius: 50px; 
+      font-weight: 700; 
+      transition: 0.4s; 
+      box-shadow: 0 8px 20px rgba(212,165,116,0.4); 
+      font-size: 1rem;
+    }
+    .btn:hover { transform: scale(1.05); background: #c48f5e; }
+    .btn-secondary { 
+      background: transparent; 
+      border: 2.5px solid var(--primary); 
+      color: var(--primary); 
+      padding: 12px 34px;
+      font-size: 0.95rem;
+    }
+    .btn-secondary:hover { background: var(--primary); color: var(--dark); }
+
+    /* Section */
+    section { padding: 100px 0; }
+    .section-title { 
+      text-align: center; 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2.8rem; 
+      margin-bottom: 3.5rem; 
+      color: var(--dark); 
+    }
+    .section-title span { color: var(--primary); }
+
+    /* About */
+    .about { background: #fff; }
+    .about-content { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+    .about-text, .about-img { flex: 1; min-width: 320px; }
+    .about-img img { border-radius: 18px; box-shadow: 0 18px 38px rgba(0,0,0,0.1); }
+
+    /* Franchise Packages */
+    .franchise { background: var(--gray); }
+    .packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+
+    .package-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 2.2rem;
+      text-align: center;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.1);
+      transition: 0.5s;
+      position: relative;
+      overflow: hidden;
+    }
+    .package-card:hover { transform: translateY(-12px); }
+    .package-card.popular {
+      border: 3.5px solid var(--primary);
+      transform: scale(1.04);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: #fff;
+      padding: 8px 24px;
+      font-size: 0.9rem;
+      border-radius: 50px;
+      box-shadow: 0 5px 14px rgba(39,174,96,0.4);
+      font-weight: 600;
+    }
+
+    .price { font-size: 2.5rem; color: var(--primary); margin: 1.3rem 0; font-weight: 700; }
+    .price small { font-size: 0.9rem; color: #777; }
+
+    .items-table {
+      margin: 1.8rem 0;
+      background: #f9f7f3;
+      border-radius: 14px;
+      padding: 1.3rem;
+      text-align: left;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .items-table table { width: 100%; border-collapse: collapse; }
+    .items-table th {
+      background: var(--primary);
+      color: var(--dark);
+      padding: 10px 8px;
+      text-align: center;
+      font-weight: 600;
+      border-radius: 10px 10px 0 0;
+    }
+    .items-table td {
+      padding: 8px;
+      border-bottom: 1px dashed #ddd;
+    }
+    .items-table td:first-child { font-weight: 600; color: var(--dark); }
+    .items-table tr:last-child td { border-bottom: none; }
+
+    .items-table i {
+      color: var(--success);
+      margin-right: 6px;
+      font-size: 1rem;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .gallery-item:hover img { transform: scale(1.1); }
+
+    /* Stats */
+    .stats { background: var(--dark); color: #fff; text-align: center; padding: 80px 0; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2rem; }
+    .stat { font-size: 2.8rem; font-weight: 700; }
+    .stat span { display: block; font-size: 1.1rem; margin-top: 0.4rem; }
+
+    /* Contact */
+    .contact { background: #fff; padding: 90px 0; }
+    .contact-info {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-info h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.4rem;
+      color: var(--dark);
+    }
+    .contact-info p {
+      font-size: 1.05rem;
+      margin: 0.9rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .contact-info i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer { background: var(--dark); color: #fff; padding: 3.5rem 0; text-align: center; }
+    .footer-map { margin-bottom: 1.8rem; }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25d366;
+      color: #fff;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      box-shadow: 0 10px 28px rgba(37,211,102,0.5);
+      z-index: 999;
+      animation: pulse 2s infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.12); }
+    @keyframes pulse { 
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 
+      70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); } 
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } 
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav ul { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%; 
+        background: var(--dark); 
+        padding: 1rem 0; 
+      }
+      nav ul.active { display: flex; }
+      nav ul li { margin: 0.8rem 0; text-align: center; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero p { font-size: 1.1rem; }
+      .btn, .btn-secondary { padding: 12px 28px; font-size: 0.9rem; }
+      .package-card.popular { transform: none; }
+      .items-table { font-size: 0.82rem; }
+      .contact-info p { flex-direction: column; text-align: center; gap: 6px; }
+      .logo-img { height: 36px; } /* Logo lebih kecil di tablet */
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 2.3rem; }
+      .logo-img { height: 32px; } /* Logo kecil di HP */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container navbar">
+      <!-- LOGO GAMBAR -->
+      <a href="#home">
+        <img src="img/LOGO A3.png" alt="Kopi Dekat Logo" class="logo-img">
+      </a>
+
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#franchise">Franchise</a></li>
+          <li><a href="#gallery">Galeri</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Kopi Dekat, Bisnis Dekat</h1>
+      <p>Franchise kopi keliling lengkap dengan gerobak, peralatan, dan media promosi. Mulai dari <strong>Rp 28 Juta</strong>.</p>
+      <a href="#franchise" class="btn">Lihat Paket Lengkap</a>
+      <a href="https://wa.me/6281325301581?text=Halo%20Kopi%20Dekat%2C%20saya%20ingin%20info%20franchise!" class="btn btn-secondary" target="_blank">Konsultasi via WA</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Tentang <span>Kopi Dekat</span></h2>
+      <div class="about-content" data-aos="zoom-in">
+        <div class="about-text">
+          <p><strong>Kopi Dekat</strong> adalah bisnis kopi keliling modern yang menyajikan kopi berkualitas langsung di dekat Anda. Kami fokus pada kemudahan, rasa autentik, dan potensi keuntungan tinggi.</p>
+          <p>Kantor pusat: <strong>Jl. Pahlawan No.9, Mugassari, Kec. Semarang Sel., Kota Semarang</strong>. Kami siap bantu Anda mulai bisnis kopi impian!</p>
+        </div>
+        <div class="about-img">
+          <img src="img/gerobak.jpg" alt="Gerobak Kopi Dekat">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Franchise Packages -->
+  <section class="franchise" id="franchise">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Pilih <span>Paket Franchise</span></h2>
+      <p style="text-align:center; max-width:800px; margin:0 auto 3.5rem; font-size:1.05rem;">
+        Semua paket termasuk <strong>pelatihan, gerobak, peralatan lengkap, dan media promosi</strong>.
+      </p>
+
+      <div class="packages">
+
+        <!-- PAKET HEMAT -->
+        <div class="package-card" data-aos="flip-left">
+          <h3>Paket Hemat</h3>
+          <div class="price">Rp 28<small> Juta</small></div>
+          <div class="items-table">
+            <table>
+              <thead><tr><th colspan="2">Item yang Didapat</th></tr></thead>
+              <tbody>
+                <tr><td>Gerobak Sepeda Manual</td><td>1</td></tr>
+                <tr><td>Timbangan</td><td>1</td></tr>
+                <tr><td>Cup</td><td>300</td></tr>
+                <tr><td>Pump</td><td>6</td></tr>
+                <tr><td>Vest</td><td>1</td></tr>
+                <tr><td>Botol Kaca</td><td>1</td></tr>
+                <tr><td>Botol Saos</td><td>2</td></tr>
+                <tr><td>Botol 2L</td><td>4</td></tr>
+                <tr><td>Kain Fiber (Lap)</td><td>2</td></tr>
+                <tr><td>Kanebo</td><td>1</td></tr>
+                <tr><td>Ice Scoop</td><td>1</td></tr>
+                <tr><td>Sendok Scoop</td><td>2</td></tr>
+                <tr><td>Toples</td><td>2</td></tr>
+                <tr><td>Coolbox</td><td>1</td></tr>
+                <tr><td>Tas Slempang</td><td>1</td></tr>
+                <tr><td>Banner dan Menu</td><td>1</td></tr>
+                <tr><td>Media Promosi</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="https://wa.me/6281325301581?text=Saya%20pilih%20Paket%20Hemat%20Rp%2028%20Juta" class="btn" target="_blank">Pilih via WA</a>
+        </div>
+
+        <!-- PAKET SPESIAL -->
+        <div class="package-card popular" data-aos="flip-up">
+          <div class="popular-badge">PALING DIREKOMENDASIKAN</div>
+          <h3>Paket Spesial</h3>
+          <div class="price">Rp 35<small> Juta</small></div>
+          <div class="items-table">
+            <table>
+              <thead><tr><th colspan="2">Item yang Didapat</th></tr></thead>
+              <tbody>
+                <tr><td>Gerobak Sepeda Listrik</td><td>1</td></tr>
+                <tr><td>Timbangan</td><td>1</td></tr>
+                <tr><td>Cup</td><td>500</td></tr>
+                <tr><td>Pump</td><td>6</td></tr>
+                <tr><td>Vest</td><td>1</td></tr>
+                <tr><td>Botol Kaca</td><td>1</td></tr>
+                <tr><td>Botol Saos</td><td>2</td></tr>
+                <tr><td>Botol 2L</td><td>4</td></tr>
+                <tr><td>Kain Fiber (Lap)</td><td>2</td></tr>
+                <tr><td>Kanebo</td><td>1</td></tr>
+                <tr><td>Ice Scoop</td><td>1</td></tr>
+                <tr><td>Sendok Scoop</td><td>2</td></tr>
+                <tr><td>Toples</td><td>2</td></tr>
+                <tr><td>Coolbox</td><td>1</td></tr>
+                <tr><td>Tas Slempang</td><td>1</td></tr>
+                <tr><td>Banner</td><td>1</td></tr>
+                <tr><td>Media Promosi</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="https://wa.me/6281325301581?text=Saya%20pilih%20Paket%20Spesial%20Rp%2035%20Juta" class="btn" target="_blank">Pilih via WA</a>
+        </div>
+
+        <!-- PAKET PREMIUM -->
+        <div class="package-card" data-aos="flip-right">
+          <h3>Paket Premium</h3>
+          <div class="price">Rp 40<small> Juta</small></div>
+          <div class="items-table">
+            <table>
+              <thead><tr><th colspan="2">Item yang Didapat</th></tr></thead>
+              <tbody>
+                <tr><td>Gerobak Listrik + Kontainer Event</td><td>1</td></tr>
+                <tr><td>Timbangan</td><td>1</td></tr>
+                <tr><td>Cup</td><td>1000</td></tr>
+                <tr><td>Pump</td><td>6</td></tr>
+                <tr><td>Vest</td><td>1</td></tr>
+                <tr><td>Botol Kaca</td><td>2</td></tr>
+                <tr><td>Botol Saos</td><td>4</td></tr>
+                <tr><td>Botol 2L</td><td>8</td></tr>
+                <tr><td>Kain Fiber (Lap)</td><td>4</td></tr>
+                <tr><td>Kanebo</td><td>2</td></tr>
+                <tr><td>Ice Scoop</td><td>2</td></tr>
+                <tr><td>Sendok Scoop</td><td>2</td></tr>
+                <tr><td>Toples</td><td>2</td></tr>
+                <tr><td>Coolbox</td><td>1</td></tr>
+                <tr><td>Tas Slempang</td><td>1</td></tr>
+                <tr><td>Banner dan Menu</td><td>2</td></tr>
+                <tr><td>Media Promosi</td><td>2</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="https://wa.me/6281325301581?text=Saya%20pilih%20Paket%20Premium%20Rp%2040%20Juta" class="btn" target="_blank">Pilih via WA</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Galeri <span>Kopi Dekat</span></h2>
+      <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600" alt="Gerobak 1"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600" alt="Gerobak 2"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=600" alt="Kopi 2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat-grid" data-aos="zoom-in">
+        <div class="stat" data-count="20">0+<span>Kota</span></div>
+        <div class="stat" data-count="1">0M+<span>Cangkir</span></div>
+        <div class="stat" data-count="25">Rp 0Jt+<span>Omzet/Bulan</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Hubungi <span>Kami</span></h2>
+      <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+        <h3>Informasi Kontak</h3>
+        <p><i class="fas fa-envelope"></i> franchise@kopidekat.id</p>
+        <p><i class="fas fa-phone"></i> +62 813-2530-1581</p>
+        <p><i class="fas fa-map-marker-alt"></i> Jl. Pahlawan No.9, Mugassari, Kec. Semarang Sel., Kota Semarang, Jawa Tengah 50249</p>
+        <p style="margin-top: 2rem; font-size: 1.1rem;">
+          <a href="https://wa.me/6281325301581?text=Halo%20Kopi%20Dekat%2C%20saya%20ingin%20info%20lengkap" class="btn" target="_blank" style="display: inline-block; margin-top: 1rem;">
+            Hubungi via WhatsApp
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.878!2d110.412!3d-7.004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b3e2b2b2b2b%3A0x4b7b5d1e2b2b2b2b!2sJl.%20Pahlawan%20No.9%2C%20Mugassari%2C%20Kec.%20Semarang%20Sel.!5e0!3m2!1sid!2sid!4v1699999999999" width="100%" height="300" style="border:0; border-radius:15px; max-width:800px; margin:0 auto; display:block;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <p>© 2025 Kopi Dekat. Jl. Pahlawan No.9, Mugassari, Semarang Selatan.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/6281325301581?text=Halo%20Kopi%20Dekat%2C%20saya%20ingin%20info%20franchise!" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    // Mobile Menu
+    document.getElementById('mobile-menu').addEventListener('click', () => {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('active');
+      const icon = document.querySelector('#mobile-menu i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Header Scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Counters
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = +counter.getAttribute('data-count');
+          let count = 0;
+          const inc = target / 100;
+          const timer = setInterval(() => {
+            count += inc;
+            if (count >= target) {
+              counter.innerText = target + (counter.innerText.match(/[^\d]/g) || []).join('');
+              clearInterval(timer);
+            } else {
+              counter.innerText = Math.ceil(count) + (counter.innerText.match(/[^\d]/g) || []).join('');
+            }
+          }, 20);
+          observer.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat').forEach(c => observer.observe(c));
+  </script>
+</body>
+</html>
